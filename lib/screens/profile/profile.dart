@@ -115,7 +115,7 @@ class _ProfileState extends State<Profile> {
                 font: fontStyle1a,
                 icon: CupertinoIcons.device_phone_portrait,
                 title: "Phone",
-                data: userInfo.read("phoneNumber"),
+                data: "${constantValues.phone}${userInfo.read("phoneNumber")}",
               ),
               SizedBox(
                 height: size.height * 0.01,
@@ -229,6 +229,9 @@ class _ProfileState extends State<Profile> {
                           );
                         });
                   }),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
             ],
           ),
         ),
@@ -243,7 +246,7 @@ class _ProfileState extends State<Profile> {
       required String lastName,
       required String pcID}) {
     return SizedBox(
-      width: size.width * 0.4,
+      width: size.width * 0.5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -260,6 +263,7 @@ class _ProfileState extends State<Profile> {
           ),
           Text(
             "${firstName.capitalizeFirst} ${lastName.capitalizeFirst}",
+            overflow: TextOverflow.ellipsis,
             style: GoogleFonts.poppins(
               textStyle: TextStyle(
                   fontSize: size.width * 0.06, fontWeight: FontWeight.w600),

@@ -169,15 +169,68 @@ class _EnterOtpForLoginState extends State<EnterOtpForLogin> {
               onSubmit: (String verificationCode) {
                 if (userInfo.read("passCode") == "") {
                   if (verificationCode == "222222") {
-                    Future.delayed(const Duration(seconds: 1), () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return LoadingAnimationWidget.threeArchedCircle(
-                              color: constantValues.successColor,
-                              size: size.width * 0.15,
-                            );
-                          });
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return LoadingAnimationWidget.threeArchedCircle(
+                            color: constantValues.successColor,
+                            size: size.width * 0.15,
+                          );
+                        });
+                    Future.delayed(const Duration(milliseconds: 1500), () {
+                      Get.back();
+                      Get.off(const HomeFrame());
+                      Get.snackbar("OTP Success",
+                          "Welcome back, ${constantValues.lName.capitalizeFirst}.",
+                          titleText: Text(
+                            "OTP Success",
+                            style: fontStyle1d1,
+                          ));
+                      userInfo.read("phoneNumber") == "" ||
+                              userInfo.read("address") == ""
+                          ? showDialog(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text(
+                                    "Complete your profile setup?",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 20)),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      ButtonA(
+                                          width: 100,
+                                          borderColor:
+                                              constantValues.transparentColor,
+                                          bgColor:
+                                              constantValues.transparentColor,
+                                          textColor: constantValues.whiteColor,
+                                          text: "Skip",
+                                          authenticate: () {
+                                            Get.back();
+                                          }),
+                                      ButtonA(
+                                          width: 100,
+                                          borderColor:
+                                              constantValues.transparentColor,
+                                          bgColor: constantValues.primaryColor,
+                                          textColor: constantValues.whiteColor,
+                                          text: "Yes",
+                                          authenticate: () {
+                                            Get.off(const EditProfile());
+                                          }),
+                                    ],
+                                  ),
+                                );
+                              })
+                          : const SizedBox();
                     });
                   } else {
                     Get.snackbar("Invalid OTP",

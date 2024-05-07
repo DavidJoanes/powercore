@@ -41,9 +41,42 @@ class MyApp extends StatelessWidget {
     userInfo.writeIfNull("phoneNumber", "");
     userInfo.writeIfNull("address", "");
     userInfo.writeIfNull("otp", "");
+    userInfo.writeIfNull("tempPassCode", "");
     userInfo.writeIfNull("passCode", "");
     userInfo.writeIfNull("currentIndex", 0);
     userInfo.writeIfNull("pcState", false);
+    userInfo.writeIfNull(
+      "alerts",
+      {
+        "batteryHealth": false,
+        "lowCharge": false,
+        "powerOverload": false,
+        "energyUsageGoal": false,
+        "energyUsageSummary": false,
+        "solarPanelPerformance": false,
+        "energyEfficiencyTips": false,
+        "appUpdate": false,
+      },
+    );
+    userInfo.writeIfNull(
+      "emailPreferences",
+      {
+        "allEmails": false,
+        "newsLetters": false,
+        "offers": false,
+        "accountUpdates": false,
+        "productUpdates": false,
+      },
+    );
+    userInfo.writeIfNull(
+      "powerWarningAndLimit",
+      {
+        "warning": false,
+        "limit": false,
+        "warningValue": 0.0,
+        "limitValue": 0.0,
+      },
+    );
     return ChangeNotifierProvider<ThemeChanger>(
         create: (_) => ThemeChanger(ThemeData(
             primarySwatch:

@@ -141,7 +141,7 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: size.height * 0.01,
+                      height: size.height * 0.02,
                     ),
                     Text(
                       userInfo.read("pcState")
@@ -389,7 +389,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     SizedBox(
-                      height: size.height * 0.02,
+                      height: size.height * 0.01,
                     ),
                   ],
                 ),

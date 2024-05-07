@@ -46,7 +46,7 @@ class _EditProfileState extends State<EditProfile> {
     firstnameController.text = userInfo.read("firstName");
     lastnameController.text = userInfo.read("lastName");
     emailController.text = userInfo.read("emailAddress");
-    phoneController.text = userInfo.read("phoneNumber") ?? constantValues.phone;
+    phoneController.text = userInfo.read("phoneNumber") ?? "";
     addressController.text = userInfo.read("address") ?? constantValues.address;
   }
 
@@ -173,7 +173,7 @@ class _EditProfileState extends State<EditProfile> {
                     autoFillHint: const [AutofillHints.addressCityAndState],
                   ),
                   SizedBox(
-                    height: size.height * 0.25,
+                    height: size.height * 0.22,
                   ),
                   ButtonA(
                     width: size.width * 0.9,
@@ -182,14 +182,16 @@ class _EditProfileState extends State<EditProfile> {
                     textColor: constantValues.whiteColor,
                     text: "Save",
                     authenticate: () {
-                      save(
-                          _formKey,
-                          firstnameController.text,
-                          lastnameController.text,
-                          userInfo.read("emailAddress"),
-                          phoneController.text,
-                          addressController.text);
-                      Get.back();
+                      final form = _formKey.currentState!;
+                      if (form.validate()) {
+                        save(
+                            firstnameController.text,
+                            lastnameController.text,
+                            userInfo.read("emailAddress"),
+                            phoneController.text,
+                            addressController.text);
+                        Get.back();
+                      }
                     },
                   ),
                 ],
@@ -199,29 +201,25 @@ class _EditProfileState extends State<EditProfile> {
         ));
   }
 
-  save(key, String fName, String lName, String email, String phoneNumber,
+  save(String fName, String lName, String email, String phoneNumber,
       String homeAddress) {
-    final form = key.currentState!;
     final first = fName.toLowerCase().trim();
     final last = lName.toLowerCase().trim();
     final mail = email.toLowerCase().trim();
     final phone = phoneNumber.trim();
     final add = homeAddress.toLowerCase().trim();
-    if (form.validate()) {
-      setState(() {
-        userInfo.write("firstName", first);
-        userInfo.write("lastName", last);
-        userInfo.write("emailAddress", mail);
-        userInfo.write("phoneNumber", "${constantValues.phone}$phone");
-        userInfo.write("address", add);
-      });
-    }
+    setState(() {
+      userInfo.write("firstName", first);
+      userInfo.write("lastName", last);
+      userInfo.write("emailAddress", mail);
+      userInfo.write("phoneNumber", phone);
+      userInfo.write("address", add);
+    });
   }
 
   Future<void> _getCurrentPosition(font) async {
     final hasPermission = await _handlePermission();
-    GeoCode geoCode =
-        GeoCode(apiKey: "AIzaSyAcqyZ3Q4JVV4FJ4bOHUKbieMONaH0LG80");
+    GeoCode geoCode = GeoCode(apiKey: "");
 
     if (!hasPermission) {
       return;

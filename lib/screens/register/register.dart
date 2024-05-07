@@ -164,9 +164,12 @@ class _RegisterState extends State<Register> {
                           text: "Complete",
                           authenticate: () {
                             if (confirmPasscodeController.text ==
-                                userInfo.read("passCode")) {
+                                userInfo.read("tempPassCode")) {
                               setState(() {
                                 userInfo.write("isNewUser", false);
+                                userInfo.write("passCode",
+                                    confirmPasscodeController.text.trim());
+                                userInfo.write("tempPassCode", "");
                               });
                               Get.snackbar(
                                 "Passcode Success",
@@ -179,11 +182,13 @@ class _RegisterState extends State<Register> {
                               Get.off(const Login());
                             } else {
                               Get.snackbar(
-                                  "Passcode Error", "Passcode does not match!",
-                                  titleText: Text(
-                                    "Passcode Error",
-                                    style: fontStyle1e,
-                                  ),);
+                                "Passcode Error",
+                                "Passcode does not match!",
+                                titleText: Text(
+                                  "Passcode Error",
+                                  style: fontStyle1e,
+                                ),
+                              );
                             }
                           })
                       : Column(
@@ -271,7 +276,7 @@ class _RegisterState extends State<Register> {
                                     if (passcodeController.text != "") {
                                       setState(() {
                                         userInfo.write(
-                                            "passCode",
+                                            "tempPassCode",
                                             passcodeController.text
                                                 .toLowerCase()
                                                 .trim());

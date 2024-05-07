@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../controllers/constants.dart';
+import '../login/login01.dart';
 
 class EnterPasscode extends StatefulWidget {
   const EnterPasscode(
@@ -51,6 +53,9 @@ class _EnterPasscodeState extends State<EnterPasscode> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final fontStyle1a = GoogleFonts.poppins(
+        textStyle: TextStyle(
+            color: constantValues.successColor, fontWeight: FontWeight.w600));
     return SingleChildScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       child: Column(children: [
@@ -84,16 +89,27 @@ class _EnterPasscodeState extends State<EnterPasscode> {
                                       child: Text(
                                         "No",
                                         style: TextStyle(
-                                            color:
-                                                constantValues.errorColor),
+                                            color: constantValues.errorColor),
                                       )),
                                   TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        userInfo.write("isNewUser", false);
+                                        userInfo.write("passCode", "");
+                                        Get.back();
+                                        Get.snackbar(
+                                          "Registration Success",
+                                          "Welcome onboard!",
+                                          titleText: Text(
+                                            "Registration Success",
+                                            style: fontStyle1a,
+                                          ),
+                                        );
+                                        Get.off(const Login());
+                                      },
                                       child: Text(
                                         "Continue",
                                         style: TextStyle(
-                                            color: constantValues
-                                                .primaryColor),
+                                            color: constantValues.primaryColor),
                                       ))
                                 ],
                               )

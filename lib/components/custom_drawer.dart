@@ -12,6 +12,7 @@ import 'package:iconly/iconly.dart';
 import '../controllers/constants.dart';
 import '../controllers/theme_controller.dart';
 import '../screens/profile/profile.dart';
+import '../screens/settings/settings.dart';
 
 class CustomNavDrawer extends StatefulWidget {
   CustomNavDrawer({super.key, required this.theme});
@@ -80,7 +81,8 @@ class _CustomNavDrawerState extends State<CustomNavDrawer> {
                 Get.to(const Profile());
               }),
               buildMenuItem(size, Icons.settings_outlined, "Settings",
-                  fontStyle1b, () {}),
+                  fontStyle1b, () {
+                Get.to(const Settings());}),
               buildMenuItem(size, CupertinoIcons.question_circle,
                   "Help & Support", fontStyle1b, () {}),
               buildMenuItem(size, Icons.privacy_tip_outlined, "Privacy",
@@ -93,33 +95,8 @@ class _CustomNavDrawerState extends State<CustomNavDrawer> {
               const Divider(
                 thickness: 5,
               ),
-              ListTile(
-                leading: IconButton(
-                    tooltip:
-                        userInfo.read("isDarkTheme") ? "Turn on" : "Turn off",
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                            "isDarkTheme", !userInfo.read("isDarkTheme"));
-                        widget.theme.setTheme(userInfo.read("isDarkTheme")
-                            ? ThemeData.dark()
-                            : ThemeData(
-                                primarySwatch: MaterialColor(
-                                    0xFF4CAF50, constantValues.defaultColor),
-                                brightness: Brightness.light));
-                      });
-                      // setState(() {
-                      //   Get.changeTheme(userInfo.read("isDarkTheme")
-                      //       ? ThemeData.light()
-                      //       : ThemeData.dark());
-                      // });},
-                    },
-                    icon: Icon(userInfo.read("isDarkTheme")
-                        ? CupertinoIcons.lightbulb
-                        : CupertinoIcons.lightbulb_fill)),
-              ),
               SizedBox(
-                height: size.height * 0.1,
+                height: size.height * 0.15,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
@@ -145,6 +122,7 @@ class _CustomNavDrawerState extends State<CustomNavDrawer> {
       ),
       title: Text(
         "${constantValues.fName.capitalizeFirst} ${constantValues.lName.capitalizeFirst}",
+        overflow: TextOverflow.ellipsis,
         style: font,
       ),
       subtitle: Text(

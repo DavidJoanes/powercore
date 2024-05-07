@@ -5,45 +5,34 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../controllers/constants.dart';
 
-class EnterConfirmPasscode extends StatefulWidget {
-  const EnterConfirmPasscode(
+class ChangePasscode02 extends StatefulWidget {
+  const ChangePasscode02(
       {super.key,
-      required this.confirmPasscodeController,
-      required this.fontStyle1c,
-      required this.fontStyle1d});
-  final TextEditingController confirmPasscodeController;
-  final TextStyle fontStyle1c;
-  final TextStyle fontStyle1d;
+      required this.newPasscodeController,
+      required this.fontStyle1a,
+      required this.fontStyle1b});
+  final TextEditingController newPasscodeController;
+  final TextStyle fontStyle1a;
+  final TextStyle fontStyle1b;
 
   @override
-  State<EnterConfirmPasscode> createState() => _EnterConfirmPasscodeState();
+  State<ChangePasscode02> createState() => _ChangePasscode02State();
 }
 
-class _EnterConfirmPasscodeState extends State<EnterConfirmPasscode> {
+class _ChangePasscode02State extends State<ChangePasscode02> {
   final constantValues = Get.find<Constants>();
   var userInfo = GetStorage();
 
   late var otpTextStyles = [
-    createStyle(Colors.red),
-    createStyle(Colors.lightBlueAccent),
-    createStyle(Colors.lime),
-    createStyle(Colors.brown),
+    createStyle(Colors.lightGreen),
+    createStyle(Colors.pink),
+    createStyle(Colors.teal),
+    createStyle(Colors.indigo),
   ];
 
   TextStyle? createStyle(Color color) {
     ThemeData theme = Theme.of(context);
     return theme.textTheme.displaySmall?.copyWith(color: color);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // widget.confirmPasscodeController.dispose();
-    super.dispose();
   }
 
   @override
@@ -54,18 +43,18 @@ class _EnterConfirmPasscodeState extends State<EnterConfirmPasscode> {
       child: Column(
         children: [
           SizedBox(
-            height: size.height * 0.07,
+            height: size.height * 0.02,
           ),
           SizedBox(
               width: size.width * 0.9,
               child: ListTile(
                 title: Text(
-                  "Confirm Passcode",
-                  style: widget.fontStyle1c,
+                  "Create New Passcode",
+                  style: widget.fontStyle1a,
                 ),
                 subtitle: Text(
-                  "Verify your security, confirm your passcode.",
-                  style: widget.fontStyle1d,
+                  "Secure your account. Create your new passcode now.",
+                  style: widget.fontStyle1b,
                 ),
               )),
           SizedBox(
@@ -78,9 +67,9 @@ class _EnterConfirmPasscodeState extends State<EnterConfirmPasscode> {
             obscureText: true,
             showFieldAsBox: true,
             onCodeChanged: (String code) {},
-            onSubmit: (String confirmPasscode) {
+            onSubmit: (String newPasscode) {
               setState(() {
-                widget.confirmPasscodeController.text = confirmPasscode;
+                widget.newPasscodeController.text = newPasscode;
               });
             },
           ),
