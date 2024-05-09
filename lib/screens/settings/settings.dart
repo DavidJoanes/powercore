@@ -10,6 +10,8 @@ import '../../controllers/theme_controller.dart';
 import 'alerts_and_reminders.dart';
 import 'change_passcode.dart';
 import 'change_passcode_.dart';
+import 'email_preferences.dart';
+import 'power_warning_and_limit.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -38,7 +40,7 @@ class _SettingsState extends State<Settings> {
     Size size = MediaQuery.of(context).size;
     ThemeChanger themeChanger = Provider.of<ThemeChanger>(context);
     final fontStyle1a = GoogleFonts.poppins(
-        textStyle: const TextStyle(fontWeight: FontWeight.w600));
+        textStyle: const TextStyle(fontWeight: FontWeight.w500));
     final fontStyle1b = GoogleFonts.poppins(
         textStyle: TextStyle(
             fontWeight: FontWeight.w600, fontSize: size.width * 0.04));
@@ -99,7 +101,9 @@ class _SettingsState extends State<Settings> {
                     icon: const Icon(
                       CupertinoIcons.forward,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(const PowerWarningAndLimit());
+                    },
                   ),
                   SizedBox(
                     height: size.height * 0.04,
@@ -173,9 +177,11 @@ class _SettingsState extends State<Settings> {
                     onTap: () {
                       Get.to(const AlertsAndReminders());
                     },
-                    onTap2: () {},
+                    onTap2: () {
+                      Get.to(const EmailPreferences());
+                    },
                   ),
-                SizedBox(
+                  SizedBox(
                     height: size.height * 0.02,
                   ),
                 ],
@@ -212,7 +218,7 @@ class _SettingsState extends State<Settings> {
           ),
         ),
         Card(
-          shape: Border.all(width: 1, color: constantValues.blackColor2),
+          shape: Border.all(width: 0.5, color: constantValues.blackColor2),
           child: SizedBox(
             width: size.width * 0.9,
             child: ListTile(
@@ -227,7 +233,7 @@ class _SettingsState extends State<Settings> {
         ),
         noOfTiles > 1
             ? Card(
-                shape: Border.all(width: 1, color: constantValues.blackColor2),
+                shape: Border.all(width: 0.5, color: constantValues.blackColor2),
                 child: SizedBox(
                   width: size.width * 0.9,
                   child: ListTile(

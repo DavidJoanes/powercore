@@ -63,7 +63,7 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final fontStyle1a = GoogleFonts.poppins(
-        textStyle: const TextStyle(fontWeight: FontWeight.w600));
+        textStyle: const TextStyle(fontWeight: FontWeight.w500));
     final fontStyle1b = GoogleFonts.poppins(
         textStyle: TextStyle(
             fontWeight: FontWeight.w600, color: constantValues.errorColor));

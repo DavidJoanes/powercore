@@ -32,7 +32,7 @@ class _AlertsAndRemindersState extends State<AlertsAndReminders> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final fontStyle1 = GoogleFonts.poppins(
-        textStyle: const TextStyle(fontWeight: FontWeight.w600));
+        textStyle: const TextStyle(fontWeight: FontWeight.w500));
     final fontStyle1a = GoogleFonts.poppins(
         textStyle: const TextStyle(fontWeight: FontWeight.w600));
     final fontStyle1b = GoogleFonts.poppins(
@@ -62,358 +62,411 @@ class _AlertsAndRemindersState extends State<AlertsAndReminders> {
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "Battery Health Reminder",
-                  subtitle:
-                      "Regular reminder to ensure the optimal health of your Powercell battery.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                !userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": userInfo.read("alerts")["lowCharge"],
-                            "powerOverload": userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal": userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary": userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": userInfo.read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips": userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": userInfo.read("alerts")["appUpdate"],
+                Card(
+                  child: Column(
+                    children: [
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "Battery Health Reminder",
+                        subtitle:
+                            "Regular reminder to ensure the optimal health of your Powercell battery.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      !userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["batteryHealth"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
-                  ),
-                ),
-                const Divider(),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "Low Powercell Charge Alert",
-                  subtitle: "Notifies you when your Powercell charge is low.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": !userInfo.read("alerts")["lowCharge"],
-                            "powerOverload": 
-                                userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal": 
-                                userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary": 
-                                userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": 
-                                userInfo.read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips": 
-                                userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": 
-                                userInfo.read("alerts")["appUpdate"],
+                          icon: userInfo.read("alerts")["batteryHealth"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: const Divider(),
+                      ),
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "Low Powercell Charge Alert",
+                        subtitle:
+                            "Notifies you when your Powercell charge is low.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      !userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["lowCharge"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
-                  ),
-                ),
-                const Divider(),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "Power Overload Warning",
-                  subtitle: "Alerts you about identified power oveload.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": userInfo.read("alerts")["lowCharge"],
-                            "powerOverload":
-                                !userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal": 
-                                userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary": 
-                                userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": 
-                                userInfo.read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips": 
-                                userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": 
-                                userInfo.read("alerts")["appUpdate"],
+                          icon: userInfo.read("alerts")["lowCharge"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: const Divider(),
+                      ),
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "Power Overload Warning",
+                        subtitle: "Alerts you about identified power oveload.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      !userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["powerOverload"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
-                  ),
-                ),
-                const Divider(),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "Energy Usage Goal Reminder",
-                  subtitle:
-                      "Notifies you when your power usage is approaching the set limit.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": userInfo.read("alerts")["lowCharge"],
-                            "powerOverload":
-                                userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal":
-                                !userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary": 
-                                userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": 
-                                userInfo.read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips": 
-                                userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": 
-                                userInfo.read("alerts")["appUpdate"],
+                          icon: userInfo.read("alerts")["powerOverload"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: const Divider(),
+                      ),
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "Energy Usage Goal Reminder",
+                        subtitle:
+                            "Notifies you when your power usage is approaching the set limit.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      !userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["energyUsageGoal"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
-                  ),
-                ),
-                const Divider(),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "Energy Usage Summary",
-                  subtitle:
-                      "Notifies you when your weekly energy summary is available.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": userInfo.read("alerts")["lowCharge"],
-                            "powerOverload":
-                                userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal":
-                                userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary":
-                                !userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": 
-                                userInfo.read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips": 
-                                userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": 
-                                userInfo.read("alerts")["appUpdate"],
+                          icon: userInfo.read("alerts")["energyUsageGoal"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: const Divider(),
+                      ),
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "Energy Usage Summary",
+                        subtitle:
+                            "Notifies you when your weekly energy summary is available.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": !userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["energyUsageSummary"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
-                  ),
-                ),
-                const Divider(),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "Solar Panel Performance Alert",
-                  subtitle:
-                      "Alerts you when your solar panels perform below average.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": userInfo.read("alerts")["lowCharge"],
-                            "powerOverload":
-                                userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal":
-                                userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary":
-                                userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": !userInfo
-                                .read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips":
-                                userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": userInfo.read("alerts")["appUpdate"],
+                          icon: userInfo.read("alerts")["energyUsageSummary"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: const Divider(),
+                      ),
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "Solar Panel Performance Alert",
+                        subtitle:
+                            "Alerts you when your solar panels perform below average.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": !userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["solarPanelPerformance"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
-                  ),
-                ),
-                const Divider(),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "Energy Efficiency Tip",
-                  subtitle: "Periodic tips on optimizing energy usage.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": userInfo.read("alerts")["lowCharge"],
-                            "powerOverload":
-                                userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal":
-                                userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary":
-                                userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": userInfo
-                                .read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips":
-                                !userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": userInfo.read("alerts")["appUpdate"],
+                          icon: userInfo.read("alerts")["solarPanelPerformance"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: const Divider(),
+                      ),
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "Energy Efficiency Tip",
+                        subtitle: "Periodic tips on optimizing energy usage.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": !userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["energyEfficiencyTips"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
-                  ),
-                ),
-                const Divider(),
-                buildCustomWidget(
-                  size: size,
-                  font1: fontStyle1a,
-                  font2: fontStyle1b,
-                  title: "App Update Notification",
-                  subtitle: "Informs you on the availability of a new update.",
-                  icon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        userInfo.write(
-                          "alerts",
-                          {
-                            "batteryHealth":
-                                userInfo.read("alerts")["batteryHealth"],
-                            "lowCharge": userInfo.read("alerts")["lowCharge"],
-                            "powerOverload":
-                                userInfo.read("alerts")["powerOverload"],
-                            "energyUsageGoal":
-                                userInfo.read("alerts")["energyUsageGoal"],
-                            "energyUsageSummary":
-                                userInfo.read("alerts")["energyUsageSummary"],
-                            "solarPanelPerformance": userInfo
-                                .read("alerts")["solarPanelPerformance"],
-                            "energyEfficiencyTips":
-                                userInfo.read("alerts")["energyEfficiencyTips"],
-                            "appUpdate": !userInfo.read("alerts")["appUpdate"],
+                          icon: userInfo.read("alerts")["energyEfficiencyTips"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                        child: const Divider(),
+                      ),
+                      buildCustomWidget(
+                        size: size,
+                        font1: fontStyle1a,
+                        font2: fontStyle1b,
+                        title: "App Update Notification",
+                        subtitle:
+                            "Informs you on the availability of a new update.",
+                        icon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              userInfo.write(
+                                "alerts",
+                                {
+                                  "batteryHealth":
+                                      userInfo.read("alerts")["batteryHealth"],
+                                  "lowCharge":
+                                      userInfo.read("alerts")["lowCharge"],
+                                  "powerOverload":
+                                      userInfo.read("alerts")["powerOverload"],
+                                  "energyUsageGoal":
+                                      userInfo.read("alerts")["energyUsageGoal"],
+                                  "energyUsageSummary": userInfo
+                                      .read("alerts")["energyUsageSummary"],
+                                  "solarPanelPerformance": userInfo
+                                      .read("alerts")["solarPanelPerformance"],
+                                  "energyEfficiencyTips": userInfo
+                                      .read("alerts")["energyEfficiencyTips"],
+                                  "appUpdate":
+                                      !userInfo.read("alerts")["appUpdate"],
+                                },
+                              );
+                            });
                           },
-                        );
-                      });
-                    },
-                    icon: userInfo.read("alerts")["appUpdate"]
-                        ? Icon(
-                            Icons.toggle_on_rounded,
-                            color: constantValues.primaryColor,
-                            size: 40,
-                          )
-                        : Icon(
-                            Icons.toggle_off_rounded,
-                            color: constantValues.greyColor,
-                            size: 40,
-                          ),
+                          icon: userInfo.read("alerts")["appUpdate"]
+                              ? Icon(
+                                  Icons.toggle_on_rounded,
+                                  color: constantValues.primaryColor,
+                                  size: 40,
+                                )
+                              : Icon(
+                                  Icons.toggle_off_rounded,
+                                  color: constantValues.greyColor,
+                                  size: 40,
+                                ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(

@@ -93,7 +93,7 @@ class _ChangePasscode_State extends State<ChangePasscode_> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(),
-                      SizedBox(height: size.height * 0.55),
+                      SizedBox(height: size.height * 0.65),
                       isLastPage
                           ? ButtonA(
                               width: size.width * 0.9,

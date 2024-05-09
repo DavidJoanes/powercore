@@ -99,7 +99,7 @@ class _ChangePasscodeState extends State<ChangePasscode> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(),
-                      SizedBox(height: size.height * 0.55),
+                      SizedBox(height: size.height * 0.65),
                       isLastPage
                           ? ButtonA(
                               width: size.width * 0.9,
@@ -155,7 +155,7 @@ class _ChangePasscodeState extends State<ChangePasscode> {
                                     });
                                     Get.snackbar(
                                       "Passcode Error",
-                                      "The passcode you've entered is invalid! You will be locked out of your account after $trials trials.",
+                                      "The passcode you've entered is invalid! You will be locked out of your account after $trials failed trials.",
                                       titleText: Text(
                                         "Passcode Error",
                                         style: fontStyle1c,
@@ -191,7 +191,7 @@ class _ChangePasscodeState extends State<ChangePasscode> {
                                     });
                                     Get.snackbar(
                                       "Passcode Error",
-                                      "Please enter your current passcode in the previous screen! You will be locked out of your account after $trials trials.",
+                                      "Please enter your current passcode in the previous screen! You will be locked out of your account after $trials failed trials.",
                                       titleText: Text(
                                         "Passcode Error",
                                         style: fontStyle1c,
